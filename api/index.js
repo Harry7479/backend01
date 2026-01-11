@@ -3,10 +3,10 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import db from "./utils/db.js";
-import userRoutes from "./routes/user.routes.js";
-import adminRoutes from "./routes/admin.routes.js";
-import taskRoutes from "./routes/task.routes.js";
+import db from "../utils/db.js";
+import userRoutes from "../routes/user.routes.js";
+import adminRoutes from "../routes/admin.routes.js";
+import taskRoutes from "../routes/task.routes.js";
 
 
 dotenv.config();
