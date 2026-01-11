@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.BASE_URL,
+    origin: true,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -26,6 +26,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+app.use(async (req, res, next) => {
+  try {
+    await db();
+    next();
+  } catch (err) {
+    res.status(500).json({ message: "Database connection failed" });
+  }
+});
 
 app.get("/", (req, res) => {
   res.send("Server is running");
@@ -35,7 +43,7 @@ app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/admin", adminRoutes);
 app.use("/api/v1/tasks", taskRoutes);
 
-db();
+
 
 
 const port = process.env.PORT || 4000;
