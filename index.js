@@ -41,6 +41,9 @@ db();
 const port = process.env.PORT || 4000;
 console.log("PORT from env:", process.env.PORT);
 
-app.listen(port, () => {
-  console.log(`App listening on port ${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`App listening on port ${port}`);
+// });
+
+// for versel 
+export default app;
